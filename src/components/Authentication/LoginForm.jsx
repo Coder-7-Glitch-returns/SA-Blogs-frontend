@@ -53,7 +53,7 @@ const LoginForm = () => {
             placeholder="Enter your email"
             value={formData.email}
             onChange={handleLoginChange}
-            className="border-sky-200 focus:border-sky-400 focus:ring-sky-400 transition-all duration-200 hover:border-sky-300 w-full px-3 py-
+            className="border-sky-200 focus:border-sky-400 focus:ring-sky-400 transition-all duration-200 hover:border-sky-300 w-full px-3 py-2
              border rounded-lg focus:outline-none focus:ring-2"
           />
         </div>
