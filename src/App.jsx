@@ -7,13 +7,13 @@ import SignUpOtpVerify from "./pages/Authentication/SignUpOtpVerify";
 import LoginOtpVerify from "./pages/Authentication/LoginOtpVerify";
 import LoginOtpSend from "./pages/Authentication/LoginOtpSend";
 import ResetPassword from "./pages/Authentication/ResetPassword";
+import Gender from "./pages/Authentication/Gender";
+import Role from "./pages/Authentication/Role";
+import CategorySelection from "./pages/Authentication/CategorySelection";
 
 function App() {
   // MainLayout
   function MainLayout() {}
-
-  // UserLayout
-  function UserLayout() {}
 
   // AdminLayout
   function AdminLayout() {}
@@ -29,12 +29,24 @@ function App() {
       element: <OtpSend />,
     },
     {
-      path: "/login-otp-send",
-      element: <LoginOtpSend />,
-    },
-    {
       path: "/sign-up-otp",
       element: <SignUpOtpVerify />,
+    },
+    {
+      path: "/gender",
+      element: <Gender />,
+    },
+    {
+      path: "/role",
+      element: <Role />,
+    },
+    {
+      path: "/select-category",
+      element: <CategorySelection />,
+    },
+    {
+      path: "/login-otp-send",
+      element: <LoginOtpSend />,
     },
     {
       path: "/login-otp",
