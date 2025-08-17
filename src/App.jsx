@@ -5,8 +5,8 @@ import AuthPage from "./pages/Authentication/AuthPage";
 import OtpSend from "./pages/Authentication/SignupOtpSend";
 import SignUpOtpVerify from "./pages/Authentication/SignUpOtpVerify";
 import LoginOtpVerify from "./pages/Authentication/LoginOtpVerify";
-import LoginOtpSend from './pages/Authentication/LoginOtpSend';
-import ResetPassword from './pages/Authentication/ResetPassword';
+import LoginOtpSend from "./pages/Authentication/LoginOtpSend";
+import ResetPassword from "./pages/Authentication/ResetPassword";
 
 function App() {
   // MainLayout
@@ -25,25 +25,25 @@ function App() {
       element: <AuthPage />,
     },
     {
-      path: '/signup-otp-send',
-      element: <OtpSend />
+      path: "/signup-otp-send",
+      element: <OtpSend />,
     },
     {
-      path: '/login-otp-send',
-      element: <LoginOtpSend />
+      path: "/login-otp-send",
+      element: <LoginOtpSend />,
     },
     {
-      path: '/sign-up-otp',
-      element: <SignUpOtpVerify />
+      path: "/sign-up-otp",
+      element: <SignUpOtpVerify />,
     },
     {
-      path: '/login-otp',
-      element: <LoginOtpVerify />
+      path: "/login-otp",
+      element: <LoginOtpVerify />,
     },
     {
-      path: '/reset-password',
-      element: <ResetPassword />
-    }
+      path: "/reset-password",
+      element: <ResetPassword />,
+    },
   ]);
   return <RouterProvider router={router} />;
 }

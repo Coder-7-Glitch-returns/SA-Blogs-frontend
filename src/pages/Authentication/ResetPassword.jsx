@@ -78,7 +78,10 @@ const ResetPassword = () => {
       <div className="relative rounded-xl w-full max-w-md shadow-2xl border-0 bg-white/90 backdrop-blur-md ring-1 ring-sky-200/50 p-6">
         <div className="space-y-4 pb-4">
           <div className="flex justify-center">
-            <div className="w-20 h-20 bg-gradient-to-br from-sky-400 via-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-xl animate-pulse">
+            <div
+              className="w-20 h-20 bg-gradient-to-br from-sky-400 via-blue-500 to-indigo-600 rounded-full flex items-center justify-center
+            shadow-xl animate-pulse"
+            >
               <svg
                 className="w-10 h-10 text-white"
                 fill="none"
@@ -95,7 +98,10 @@ const ResetPassword = () => {
             </div>
           </div>
           <div className="text-center">
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-sky-600 to-blue-700 bg-clip-text text-transparent transition-opacity duration-300 opacity-100">
+            <h1
+              className="text-3xl font-bold bg-gradient-to-r from-sky-600 to-blue-700 bg-clip-text text-transparent transition-opacity duration-300
+            opacity-100"
+            >
               Reset Password
             </h1>
           </div>
@@ -112,7 +118,8 @@ const ResetPassword = () => {
                 placeholder="Enter your New Password"
                 value={newPassword}
                 onChange={handleNewPasswordChange}
-                className="border-sky-200 focus:border-sky-400 focus:ring-sky-400 transition-all duration-200 hover:border-sky-300 w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2"
+                className="border-sky-200 focus:border-sky-400 focus:ring-sky-400 transition-all duration-200 hover:border-sky-300 w-full px-3
+                py-2 border rounded-lg focus:outline-none focus:ring-2"
               />
               <span
                 className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
@@ -140,7 +147,8 @@ const ResetPassword = () => {
                 placeholder="Confirm your password"
                 value={confirmPassword}
                 onChange={handleConfirmPasswordChange}
-                className="border-sky-200 focus:border-sky-400 focus:ring-sky-400 transition-all duration-200 hover:border-sky-300 w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2"
+                className="border-sky-200 focus:border-sky-400 focus:ring-sky-400 transition-all duration-200 hover:border-sky-300 w-full px-3
+                py-2 border rounded-lg focus:outline-none focus:ring-2"
               />
               <span
                 className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
@@ -159,7 +167,8 @@ const ResetPassword = () => {
           )}
           <button
             type="submit"
-            className="px-4 py-2 rounded-lg font-medium w-full bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 hover:from-sky-600 hover:via-blue-700 hover:to-indigo-700 text-white shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+            className="px-4 py-2 rounded-lg font-medium w-full bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 hover:from-sky-600
+            hover:via-blue-700 hover:to-indigo-700 text-white shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
           >
             Reset Password
           </button>

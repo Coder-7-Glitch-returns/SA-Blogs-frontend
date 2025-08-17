@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function Cateogries() {
-  return (
-    <div>
-      
-    </div>
-  )
+  return <div></div>;
 }
 
-export default Cateogries
+export default Cateogries;

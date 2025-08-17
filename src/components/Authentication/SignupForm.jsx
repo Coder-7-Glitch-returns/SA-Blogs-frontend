@@ -83,7 +83,8 @@ const SignupForm = () => {
               placeholder="John"
               value={formData.firstName}
               onChange={handleSignupChange}
-              className="border-sky-200 focus:border-sky-400 focus:ring-sky-400 transition-all duration-200 hover:border-sky-300 w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2"
+              className="border-sky-200 focus:border-sky-400 focus:ring-sky-400 transition-all duration-200 hover:border-sky-300 w-full px-3 py-2
+              border rounded-lg focus:outline-none focus:ring-2"
             />
             {errors.firstName && (
               <div className="text-red-500 text-sm mt-1">
@@ -101,7 +102,8 @@ const SignupForm = () => {
               placeholder="Doe"
               value={formData.lastName}
               onChange={handleSignupChange}
-              className="border-sky-200 focus:border-sky-400 focus:ring-sky-400 transition-all duration-200 hover:border-sky-300 w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2"
+              className="border-sky-200 focus:border-sky-400 focus:ring-sky-400 transition-all duration-200 hover:border-sky-300 w-full px-3 py-2
+              border rounded-lg focus:outline-none focus:ring-2"
             />
             {errors.lastName && (
               <div className="text-red-500 text-sm mt-1">{errors.lastName}</div>
@@ -120,7 +122,8 @@ const SignupForm = () => {
             placeholder="Enter your email"
             value={formData.email}
             onChange={handleSignupChange}
-            className="border-sky-200 focus:border-sky-400 focus:ring-sky-400 transition-all duration-200 hover:border-sky-300 w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2"
+            className="border-sky-200 focus:border-sky-400 focus:ring-sky-400 transition-all duration-200 hover:border-sky-300 w-full px-3 py-2
+            border rounded-lg focus:outline-none focus:ring-2"
           />
           {errors.email && (
             <div className="text-red-500 text-sm mt-1">{errors.email}</div>
@@ -139,7 +142,8 @@ const SignupForm = () => {
               placeholder="Create a password"
               value={formData.password}
               onChange={handleSignupChange}
-              className="border-sky-200 focus:border-sky-400 focus:ring-sky-400 transition-all duration-200 hover:border-sky-300 w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2"
+              className="border-sky-200 focus:border-sky-400 focus:ring-sky-400 transition-all duration-200 hover:border-sky-300 w-full px-3 py-2
+              border rounded-lg focus:outline-none focus:ring-2"
             />
             <span
               className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
@@ -172,7 +176,8 @@ const SignupForm = () => {
               placeholder="Confirm your password"
               value={formData.confirmPassword}
               onChange={handleSignupChange}
-              className="border-sky-200 focus:border-sky-400 focus:ring-sky-400 transition-all duration-200 hover:border-sky-300 w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2"
+              className="border-sky-200 focus:border-sky-400 focus:ring-sky-400 transition-all duration-200 hover:border-sky-300 w-full px-3 py-2
+              border rounded-lg focus:outline-none focus:ring-2"
             />
             <span
               className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
@@ -193,7 +198,8 @@ const SignupForm = () => {
         </div>
         <button
           type="submit"
-          className="px-4 py-2 rounded-lg font-medium w-full bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 hover:from-sky-600 hover:via-blue-700 hover:to-indigo-700 text-white shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+          className="px-4 py-2 rounded-lg font-medium w-full bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 hover:from-sky-600
+          hover:via-blue-700 hover:to-indigo-700 text-white shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
         >
           <Link to={"/signup-otp-send"}>Create Account</Link>
         </button>

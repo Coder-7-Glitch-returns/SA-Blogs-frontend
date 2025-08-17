@@ -79,7 +79,10 @@ function LoginOtpVerify() {
       </div>
 
       {/* Grid pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(14,165,233,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(14,165,233,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+      <div
+        className="absolute inset-0
+      bg-[linear-gradient(rgba(14,165,233,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(14,165,233,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"
+      ></div>
 
       {/* Back button */}
       <div className="absolute top-6 left-6 z-10">
@@ -129,7 +132,8 @@ function LoginOtpVerify() {
                   onChange={(e) => handleInputChange(index, e.target.value)}
                   onKeyDown={(e) => handleKeyDown(index, e)}
                   ref={(el) => (inputRefs.current[index] = el)}
-                  className="w-14 h-14 text-center text-2xl font-bold border-2 border-sky-200 rounded-lg focus:border-sky-500 focus:outline-none transition-all duration-200 bg-white/80 backdrop-blur-sm"
+                  className="w-14 h-14 text-center text-2xl font-bold border-2 border-sky-200 rounded-lg focus:border-sky-500 focus:outline-none
+                  transition-all duration-200 bg-white/80 backdrop-blur-sm"
                   autoComplete="off"
                 />
               ))}
