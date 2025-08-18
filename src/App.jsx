@@ -1,6 +1,8 @@
 import React from "react";
 import "./App.css";
 import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
+
+// Authentications
 import AuthPage from "./pages/Authentication/AuthPage";
 import OtpSend from "./pages/Authentication/SignupOtpSend";
 import SignUpOtpVerify from "./pages/Authentication/SignUpOtpVerify";
@@ -10,16 +12,36 @@ import ResetPassword from "./pages/Authentication/ResetPassword";
 import Gender from "./pages/Authentication/Gender";
 import Role from "./pages/Authentication/Role";
 import CategorySelection from "./pages/Authentication/CategorySelection";
+
+// MainLayout
 import HomePage from "./pages/Main/HomePage";
 import Cateogries from "./pages/Main/Cateogries";
 import About from "./pages/Main/About";
 import Header from "./components/Main/Header/Header";
+
+// AdminLayout
 import Sidebar from "./components/Admin/Sidebar/Sidebar";
 import AdminHeader from "./components/Admin/AdminHeader/AdminHeader";
+
+// ProfileLayout
+import UserProfile from "./pages/Profile/UserProfile";
+import UserSettings from "./pages/Profile/UserSettings";
 
 function App() {
   // MainLayout
   function MainLayout() {
+    return (
+      <div>
+        <Header />
+        <main>
+          <Outlet />
+        </main>
+      </div>
+    );
+  }
+
+  // ProfileLayout
+  function ProfileLayout() {
     return (
       <div>
         <Header />
@@ -86,7 +108,7 @@ function App() {
       element: <MainLayout />,
       children: [
         {
-          indext: true,
+          index: true,
           element: <HomePage />,
         },
         {
@@ -100,14 +122,28 @@ function App() {
       ],
     },
     {
-      path: '/admin',
+      path: "/profile",
+      element: <ProfileLayout />,
+      children: [
+        {
+          path: "profile",
+          element: <UserProfile />,
+        },
+        {
+          path: "settings",
+          element: <UserSettings />,
+        },
+      ],
+    },
+    {
+      path: "/admin",
       element: <AdminLayout />,
       children: [
         {
-          index: true
-        }
-      ]
-    }
+          index: true,
+        },
+      ],
+    },
   ]);
   return <RouterProvider router={router} />;
 }

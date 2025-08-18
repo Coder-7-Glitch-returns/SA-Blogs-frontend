@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function AdminCategory() {
-  return (
-    <div>
-      
-    </div>
-  )
+  return <div></div>;
 }
 
-export default AdminCategory
+export default AdminCategory;
