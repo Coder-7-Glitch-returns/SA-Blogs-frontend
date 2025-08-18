@@ -27,6 +27,17 @@ import AdminHeader from "./components/Admin/AdminHeader/AdminHeader";
 import UserProfile from "./pages/Profile/UserProfile";
 import UserSettings from "./pages/Profile/UserSettings";
 
+// User Dashboard
+import UserSidebar from "./components/User/Sidebar/UserSidebar";
+import UserHeader from './components/User/Header/UserHeader';
+import Blogs from "./pages/User/Blogs";
+import AddBlogs from "./pages/User/AddBlogs";
+
+// Admin Dashboard
+import AdminDashboard from "./pages/Admin/AdminDashboard";
+import AdminUsers from "./pages/Admin/AdminUsers";
+import AdminCategory from "./pages/Admin/AdminCategory";
+
 function App() {
   // MainLayout
   function MainLayout() {
@@ -52,6 +63,21 @@ function App() {
     );
   }
 
+  // UserLayout
+  function UserLayout() {
+    return (
+      <div className="flex">
+        <UserSidebar />
+        <div>
+          <UserHeader />
+          <main>
+            <Outlet />
+          </main>
+        </div>
+      </div>
+    );
+  }
+
   // AdminLayout
   function AdminLayout() {
     <div className="flex">
@@ -67,6 +93,7 @@ function App() {
 
   // Routes
   const router = createBrowserRouter([
+    // Authentication
     {
       path: "/",
       element: <AuthPage />,
@@ -103,6 +130,8 @@ function App() {
       path: "/reset-password",
       element: <ResetPassword />,
     },
+
+    // MainLayout
     {
       path: "/main",
       element: <MainLayout />,
@@ -121,6 +150,8 @@ function App() {
         },
       ],
     },
+
+    // UserProfile
     {
       path: "/profile",
       element: <ProfileLayout />,
@@ -135,12 +166,39 @@ function App() {
         },
       ],
     },
+
+    // User Dashboard
+    {
+      path: "/user-dashboard",
+      element: <UserLayout />,
+      children: [
+        {
+          index: true,
+          element: <Blogs />,
+        },
+        {
+          path: "add-blog",
+          element: <AddBlogs />,
+        },
+      ],
+    },
+
+    // Admin Dashboard
     {
       path: "/admin",
       element: <AdminLayout />,
       children: [
         {
           index: true,
+          element: <AdminDashboard />,
+        },
+        {
+          path: "admin-user",
+          element: <AdminUsers />,
+        },
+        {
+          path: "admin-category",
+          element: <AdminCategory />,
         },
       ],
     },
