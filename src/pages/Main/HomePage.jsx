@@ -158,7 +158,7 @@ function HomePage() {
               >
                 <div className="relative">
                   <img
-                    src="../../../public/assets/depression.jpg"
+                    src="/assets/depression.jpg"
                     alt="IMG"
                     className="w-full rounded-t-md"
                   />
@@ -234,7 +234,7 @@ function HomePage() {
         </div>
         <div className="bg-white shadow-lg h-[700px] max-w-2xl rounded-xl mx-auto mt-6 p-6">
           <div className="mx-auto w-30 h-30">
-            <img src="../../../public/assets/Logo.png" alt="IMG" />
+            <img src="/assets/Logo.png" alt="IMG" />
           </div>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-6">

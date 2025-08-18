@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "../../../public/assets/Logo.png";
+import Logo from "/assets/Logo.png";
 import { FaChevronDown } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 

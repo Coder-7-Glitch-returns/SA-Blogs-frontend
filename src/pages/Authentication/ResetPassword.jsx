@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import Logo from "../../../public/assets/Logo.png";
+import Logo from "/assets/Logo.png";
 
 const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState("");

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import LoginForm from "./../../components/Authentication/LoginForm";
 import SignupForm from "./../../components/Authentication/SignupForm";
-import Logo from "../../../public/assets/Logo.png";
+import Logo from "/assets/Logo.png";
 
 function AuthPage() {
   const [activeTab, setActiveTab] = useState("signup");
