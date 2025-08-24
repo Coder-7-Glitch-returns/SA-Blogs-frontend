@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { FaLock, FaUserCircle, FaShieldAlt } from "react-icons/fa";
 
 export default function UserSettings() {
   const [userSettings, setUserSettings] = useState({
@@ -9,22 +10,18 @@ export default function UserSettings() {
     currentPassword: "",
     newPassword: "",
     confirmPassword: "",
-    phone: "+1 (555) 123-4567",
     bio: "Software developer passionate about creating amazing user experiences.",
-    notifications: {
-      email: true,
-      push: false,
-      sms: true,
-    },
     privacy: {
-      profileVisible: true,
-      showEmail: false,
-      showPhone: false,
+      ImageVisible: true,
+      showEmail: true,
+      showPhone: true,
     },
   });
 
   const [activeTab, setActiveTab] = useState("profile");
   const [showSuccess, setShowSuccess] = useState(false);
+  const [isProfileEditing, setIsProfileEditing] = useState(false);
+  const [tempProfile, setTempProfile] = useState(null);
 
   const handleInputChange = (field, value) => {
     setUserSettings({ ...userSettings, [field]: value });
@@ -45,11 +42,33 @@ export default function UserSettings() {
     setTimeout(() => setShowSuccess(false), 3000);
   };
 
+  const handleEditProfile = () => {
+    setTempProfile({
+      name: userSettings.name,
+      email: userSettings.email,
+      bio: userSettings.bio,
+    });
+    setIsProfileEditing(true);
+  };
+
+  const handleSaveProfile = () => {
+    setUserSettings({ ...userSettings, ...tempProfile });
+    setIsProfileEditing(false);
+    handleSave();
+  };
+
+  const handleCancelEdit = () => {
+    setIsProfileEditing(false);
+  };
+
+  const handleTempProfileChange = (field, value) => {
+    setTempProfile({ ...tempProfile, [field]: value });
+  };
+
   const tabs = [
-    { id: "profile", label: "Profile", icon: "👤" },
-    { id: "security", label: "Security", icon: "🔒" },
-    { id: "notifications", label: "Notifications", icon: "🔔" },
-    { id: "privacy", label: "Privacy", icon: "🛡️" },
+    { id: "profile", label: "Profile", icon: FaUserCircle },
+    { id: "security", label: "Security", icon: FaLock },
+    { id: "privacy", label: "Privacy", icon: FaShieldAlt },
   ];
 
   return (
@@ -69,13 +88,13 @@ export default function UserSettings() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`py-4 px-2 border-b-2 font-medium text-sm transition-colors ${
+                    className={`py-4 px-2 border-b-2 font-medium flex  items-center text-sm transition-colors ${
                       activeTab === tab.id
                         ? "border-sky-500 text-sky-600"
                         : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
                     }`}
                   >
-                    <span className="mr-2">{tab.icon}</span>
+                    <tab.icon className="mr-2" />
                     {tab.label}
                   </button>
                 ))}
@@ -86,9 +105,17 @@ export default function UserSettings() {
               {/* Profile Tab */}
               {activeTab === "profile" && (
                 <div className="space-y-6">
-                  <h2 className="text-xl font-semibold text-sky-900">
-                    Profile Information
-                  </h2>
+                  <div className="flex justify-between items-center">
+                    <h2 className="text-xl font-semibold text-sky-900">
+                      Profile Information
+                    </h2>
+                    <button
+                      onClick={handleEditProfile}
+                      className="bg-sky-500 text-white px-4 py-2 rounded-lg hover:bg-sky-600 transition-colors font-medium"
+                    >
+                      Edit Profile
+                    </button>
+                  </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
@@ -98,10 +125,8 @@ export default function UserSettings() {
                       <input
                         type="text"
                         value={userSettings.name}
-                        onChange={(e) =>
-                          handleInputChange("name", e.target.value)
-                        }
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+                        disabled={true}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-100"
                       />
                     </div>
 
@@ -112,24 +137,8 @@ export default function UserSettings() {
                       <input
                         type="email"
                         value={userSettings.email}
-                        onChange={(e) =>
-                          handleInputChange("email", e.target.value)
-                        }
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Phone Number
-                      </label>
-                      <input
-                        type="tel"
-                        value={userSettings.phone}
-                        onChange={(e) =>
-                          handleInputChange("phone", e.target.value)
-                        }
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+                        disabled={true}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-100"
                       />
                     </div>
                   </div>
@@ -140,9 +149,9 @@ export default function UserSettings() {
                     </label>
                     <textarea
                       value={userSettings.bio}
-                      onChange={(e) => handleInputChange("bio", e.target.value)}
                       rows={4}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+                      disabled={true}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-100"
                     />
                   </div>
                 </div>
@@ -213,95 +222,6 @@ export default function UserSettings() {
                 </div>
               )}
 
-              {/* Notifications Tab */}
-              {activeTab === "notifications" && (
-                <div className="space-y-6">
-                  <h2 className="text-xl font-semibold text-sky-900">
-                    Notification Preferences
-                  </h2>
-
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <h3 className="font-medium text-gray-900">
-                          Email Notifications
-                        </h3>
-                        <p className="text-sm text-gray-500">
-                          Receive updates via email
-                        </p>
-                      </div>
-                      <label className="relative inline-flex items-center cursor-pointer">
-                        <input
-                          type="checkbox"
-                          checked={userSettings.notifications.email}
-                          onChange={(e) =>
-                            handleNestedChange(
-                              "notifications",
-                              "email",
-                              e.target.checked
-                            )
-                          }
-                          className="sr-only peer"
-                        />
-                        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-sky-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-sky-600"></div>
-                      </label>
-                    </div>
-
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <h3 className="font-medium text-gray-900">
-                          Push Notifications
-                        </h3>
-                        <p className="text-sm text-gray-500">
-                          Receive push notifications on your device
-                        </p>
-                      </div>
-                      <label className="relative inline-flex items-center cursor-pointer">
-                        <input
-                          type="checkbox"
-                          checked={userSettings.notifications.push}
-                          onChange={(e) =>
-                            handleNestedChange(
-                              "notifications",
-                              "push",
-                              e.target.checked
-                            )
-                          }
-                          className="sr-only peer"
-                        />
-                        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-sky-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-sky-600"></div>
-                      </label>
-                    </div>
-
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <h3 className="font-medium text-gray-900">
-                          SMS Notifications
-                        </h3>
-                        <p className="text-sm text-gray-500">
-                          Receive text messages for important updates
-                        </p>
-                      </div>
-                      <label className="relative inline-flex items-center cursor-pointer">
-                        <input
-                          type="checkbox"
-                          checked={userSettings.notifications.sms}
-                          onChange={(e) =>
-                            handleNestedChange(
-                              "notifications",
-                              "sms",
-                              e.target.checked
-                            )
-                          }
-                          className="sr-only peer"
-                        />
-                        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-sky-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-sky-600"></div>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              )}
-
               {/* Privacy Tab */}
               {activeTab === "privacy" && (
                 <div className="space-y-6">
@@ -313,7 +233,7 @@ export default function UserSettings() {
                     <div className="flex items-center justify-between">
                       <div>
                         <h3 className="font-medium text-gray-900">
-                          Profile Visibility
+                          DP Visibility
                         </h3>
                         <p className="text-sm text-gray-500">
                           Make your profile visible to other users
@@ -322,11 +242,11 @@ export default function UserSettings() {
                       <label className="relative inline-flex items-center cursor-pointer">
                         <input
                           type="checkbox"
-                          checked={userSettings.privacy.profileVisible}
+                          checked={userSettings.privacy.ImageVisible}
                           onChange={(e) =>
                             handleNestedChange(
                               "privacy",
-                              "profileVisible",
+                              "ImageVisible",
                               e.target.checked
                             )
                           }
@@ -391,18 +311,87 @@ export default function UserSettings() {
                 </div>
               )}
 
-              <div className="flex justify-end pt-6 border-t border-gray-200 mt-8">
-                <button
-                  onClick={handleSave}
-                  className="bg-sky-500 text-white px-6 py-2 rounded-lg hover:bg-sky-600 transition-colors font-medium"
-                >
-                  Save Changes
-                </button>
-              </div>
+              {/* The "Save Changes" button is now only for the other tabs */}
+              {activeTab !== "profile" && (
+                <div className="flex justify-end pt-6 border-t border-gray-200 mt-8">
+                  <button
+                    onClick={handleSave}
+                    className="bg-sky-500 text-white px-6 py-2 rounded-lg hover:bg-sky-600 transition-colors font-medium"
+                  >
+                    Save Changes
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
+
+      {/* Edit Profile Popup */}
+      {isProfileEditing && (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center">
+          <div className="relative p-8 bg-white rounded-xl shadow-lg w-full max-w-md mx-auto">
+            <h2 className="text-2xl font-bold mb-6 text-sky-900">
+              Edit Profile
+            </h2>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  value={tempProfile.name}
+                  onChange={(e) =>
+                    handleTempProfileChange("name", e.target.value)
+                  }
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  value={tempProfile.email}
+                  onChange={(e) =>
+                    handleTempProfileChange("email", e.target.value)
+                  }
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Bio
+                </label>
+                <textarea
+                  value={tempProfile.bio}
+                  onChange={(e) =>
+                    handleTempProfileChange("bio", e.target.value)
+                  }
+                  rows={4}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+                />
+              </div>
+            </div>
+            <div className="flex justify-end space-x-4 mt-6">
+              <button
+                onClick={handleCancelEdit}
+                className="px-6 py-2 rounded-lg text-gray-700 font-medium hover:bg-gray-200 transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleSaveProfile}
+                className="bg-sky-500 text-white px-6 py-2 rounded-lg hover:bg-sky-600 transition-colors font-medium"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
