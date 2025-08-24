@@ -96,7 +96,7 @@ export default function UserProfile() {
                         year: "numeric",
                         month: "long",
                         day: "numeric",
-                      }
+                      },
                     )}
                   </p>
                 </div>

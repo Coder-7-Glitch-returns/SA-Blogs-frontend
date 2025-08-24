@@ -19,7 +19,7 @@ import About from "./pages/Main/About";
 import Header from "./components/Main/Header/Header";
 
 // AdminLayout
-import Sidebar from "./components/Admin/Sidebar/Sidebar";
+import AdminSidebar from "./components/Admin/Sidebar/AdminSidebar";
 import AdminHeader from "./components/Admin/AdminHeader/AdminHeader";
 
 // ProfileLayout
@@ -32,7 +32,6 @@ import UserSidebar from "./components/User/Sidebar/UserSidebar";
 import UserHeader from "./components/User/Header/UserHeader";
 import Blogs from "./pages/User/Blogs";
 import AddBlogs from "./pages/User/AddBlogs";
-import WriterProfile from './pages/Profile/WriterProfile';
 
 // Admin Dashboard
 import AdminDashboard from "./pages/Admin/AdminDashboard";
@@ -40,6 +39,23 @@ import AdminUsers from "./pages/Admin/AdminUsers";
 import AdminCategory from "./pages/Admin/AdminCategory";
 import AllBlogs from "./pages/Main/AllBlogs";
 import Footer from "./components/Main/Footer/Footer";
+import AdminProfile from "./pages/Admin/Admin_Profile/AdminProfile";
+
+// Admin-Categories
+import Artificial_Intelligence_AI from "./components/Admin/Cats/Artificial_Intelligence_AI";
+import Books_and_Writing from "./components/Admin/Cats/Books_and_Writing";
+import Personal_Finance from "./components/Admin/Cats/Personal_Finance";
+import Health_and_Wellness from "./components/Admin/Cats/Health_and_Wellness";
+import Sustainable_Living from "./components/Admin/Cats/Sustainable_Living";
+import Digital_Marketing from "./components/Admin/Cats/Digital_Marketing";
+import Gaming from "./components/Admin/Cats/Gaming";
+import Food_Recipies from "./components/Admin/Cats/Food_Recipies";
+import Travel from "./components/Admin/Cats/Travel";
+import Remote_work_and_productivity from "./components/Admin/Cats/Remote_work_and_productivity";
+import Home_Decor from "./components/Admin/Cats/Home_Decor";
+import Personal_Development from "./components/Admin/Cats/Personal_Development";
+import Tech from "./components/Admin/Cats/Tech";
+import AdminSettings from "./pages/Admin/Admin_Profile/AdminSettings";
 
 function App() {
   // MainLayout
@@ -85,15 +101,26 @@ function App() {
 
   // AdminLayout
   function AdminLayout() {
-    <div className="flex">
-      <Sidebar />
-      <div className="w-full">
-        <AdminHeader />
-        <main>
-          <Outlet />
-        </main>
+    return (
+      <div className="flex">
+        <AdminSidebar />
+        <div className="w-full">
+          <AdminHeader />
+          <main>
+            <Outlet />
+          </main>
+        </div>
       </div>
-    </div>;
+    );
+  }
+
+  // CategoryLayout
+  function CategoryLayout() {
+    return (
+      <main>
+        <Outlet />
+      </main>
+    );
   }
 
   // Routes
@@ -194,9 +221,9 @@ function App() {
           element: <UserProfile />,
         },
         {
-          path: 'settings',
-          element: <UserSettings />
-        }
+          path: "settings",
+          element: <UserSettings />,
+        },
       ],
     },
 
@@ -214,8 +241,74 @@ function App() {
           element: <AdminUsers />,
         },
         {
-          path: "admin-category",
-          element: <AdminCategory />,
+          path: "admin-profile",
+          element: <AdminProfile />,
+        },
+        {
+          path: "settings",
+          element: <AdminSettings />,
+        },
+        {
+          path: "category",
+          element: <CategoryLayout />,
+          children: [
+            {
+              path: "ai",
+              element: <Artificial_Intelligence_AI />,
+            },
+            {
+              path: "finance",
+              element: <Personal_Finance />,
+            },
+            {
+              path: "health",
+              element: <Health_and_Wellness />,
+            },
+            {
+              path: "living",
+              element: <Sustainable_Living />,
+            },
+            {
+              path: "marketing",
+              element: <Digital_Marketing />,
+            },
+            {
+              path: "gaming",
+              element: <Gaming />,
+            },
+            {
+              path: "food-recipe",
+              element: <Food_Recipies />,
+            },
+            {
+              path: "travel",
+              element: <Travel />,
+            },
+            {
+              path: "remote-work",
+              element: <Remote_work_and_productivity />,
+            },
+            {
+              path: "home-decor",
+              element: <Home_Decor />,
+            },
+            {
+              path: "personal-development",
+              element: <Personal_Development />,
+            },
+            {
+              path: "tech-gadgets",
+              element: <Tech />,
+            },
+            {
+              path: "books",
+              element: <Books_and_Writing />,
+            },
+            {
+              path: "remote-work",
+              element: <Remote_work_and_productivity />,
+            },
+          ],
         },
       ],
     },

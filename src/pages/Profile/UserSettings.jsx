@@ -247,7 +247,7 @@ export default function UserSettings() {
                             handleNestedChange(
                               "privacy",
                               "ImageVisible",
-                              e.target.checked
+                              e.target.checked,
                             )
                           }
                           className="sr-only peer"
@@ -273,7 +273,7 @@ export default function UserSettings() {
                             handleNestedChange(
                               "privacy",
                               "showEmail",
-                              e.target.checked
+                              e.target.checked,
                             )
                           }
                           className="sr-only peer"
@@ -299,7 +299,7 @@ export default function UserSettings() {
                             handleNestedChange(
                               "privacy",
                               "showPhone",
-                              e.target.checked
+                              e.target.checked,
                             )
                           }
                           className="sr-only peer"

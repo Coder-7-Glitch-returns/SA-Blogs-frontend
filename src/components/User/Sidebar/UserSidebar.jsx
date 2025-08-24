@@ -5,7 +5,7 @@ function UserSidebar() {
   return (
     <aside className="w-64 bg-white shadow-sm border-r border-sky-200 min-h-screen">
       <nav className="p-6">
-        <Link to={'/user-dashboard/'}>
+        <Link to={"/user-dashboard/"}>
           <h2 className="text-lg font-bold text-sky-900 mb-4">SA Blogs</h2>
         </Link>
         <ul className="space-y-2">
