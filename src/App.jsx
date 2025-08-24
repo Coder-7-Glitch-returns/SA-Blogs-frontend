@@ -37,6 +37,8 @@ import AddBlogs from "./pages/User/AddBlogs";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import AdminUsers from "./pages/Admin/AdminUsers";
 import AdminCategory from "./pages/Admin/AdminCategory";
+import BlogsPage from "./pages/Main/About";
+import AllBlogs from "./pages/Main/AllBlogs";
 
 function App() {
   // MainLayout
@@ -141,12 +143,8 @@ function App() {
           element: <HomePage />,
         },
         {
-          path: "category",
-          element: <Cateogries />,
-        },
-        {
-          path: "about",
-          element: <About />,
+          path: "blogs",
+          element: <AllBlogs />,
         },
       ],
     },

@@ -13,7 +13,8 @@ const mockBlogs = [
     author: "Sarah Johnson",
     date: "2024-01-15",
     readTime: "5 min read",
-    image: "/modern-web-dev-workspace.png",
+    image:
+      "https://skillgigs.com/wp-content/uploads/2024/07/best-programing-languages-to-learn-in-2024.jpg",
     content:
       "Web development is evolving at an unprecedented pace. From the rise of AI-powered development tools to the increasing adoption of serverless architectures, developers need to stay ahead of the curve. This comprehensive guide explores the key trends that will define web development in 2024 and beyond.",
   },
@@ -26,7 +27,8 @@ const mockBlogs = [
     author: "Mike Chen",
     date: "2024-01-12",
     readTime: "8 min read",
-    image: "/react-hooks-code-editor.png",
+    image:
+      "https://skillgigs.com/wp-content/uploads/2024/07/best-programing-languages-to-learn-in-2024.jpg",
     content:
       "React Hooks revolutionized how we write React components. This comprehensive guide covers everything from basic useState and useEffect to advanced custom hooks, helping you write cleaner, more maintainable code.",
   },
@@ -39,7 +41,8 @@ const mockBlogs = [
     author: "Emma Davis",
     date: "2024-01-10",
     readTime: "6 min read",
-    image: "/modern-ui-ux-mockups.png",
+    image:
+      "https://skillgigs.com/wp-content/uploads/2024/07/best-programing-languages-to-learn-in-2024.jpg",
     content:
       "Great design is invisible to users but crucial for success. This article explores fundamental UI/UX principles including accessibility, responsive design, and user-centered design methodologies.",
   },
@@ -52,7 +55,8 @@ const mockBlogs = [
     author: "Alex Rodriguez",
     date: "2024-01-08",
     readTime: "10 min read",
-    image: "/nodejs-api-development.png",
+    image:
+      "https://skillgigs.com/wp-content/uploads/2024/07/best-programing-languages-to-learn-in-2024.jpg",
     content:
       "Building scalable APIs requires careful planning and implementation. Learn about RESTful design, authentication, rate limiting, and performance optimization techniques for Node.js applications.",
   },
@@ -65,7 +69,8 @@ const mockBlogs = [
     author: "Lisa Wang",
     date: "2024-01-05",
     readTime: "7 min read",
-    image: "/code-review-collaboration.png",
+    image:
+      "https://skillgigs.com/wp-content/uploads/2024/07/best-programing-languages-to-learn-in-2024.jpg",
     content:
       "Code reviews are essential for maintaining code quality and team knowledge sharing. This guide covers best practices for both reviewers and authors to make the process more effective.",
   },
@@ -78,7 +83,8 @@ const mockBlogs = [
     author: "Tom Wilson",
     date: "2024-01-03",
     readTime: "4 min read",
-    image: "/css-grid-flexbox-layout.png",
+    image:
+      "https://skillgigs.com/wp-content/uploads/2024/07/best-programing-languages-to-learn-in-2024.jpg",
     content:
       "Understanding when to use CSS Grid versus Flexbox is crucial for modern web layouts. This article provides clear guidelines and practical examples for both layout methods.",
   },
@@ -94,7 +100,7 @@ const categories = [
   "CSS",
 ];
 
-export default function BlogsPage() {
+export default function AllBlogs() {
   const [blogs, setBlogs] = useState(mockBlogs);
   const [filteredBlogs, setFilteredBlogs] = useState(mockBlogs);
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -141,10 +147,6 @@ export default function BlogsPage() {
       <header className="sticky top-0 z-40 bg-gradient-to-r from-primary to-secondary shadow-lg backdrop-blur-sm">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
-            <h1 className="text-3xl font-bold text-primary-foreground">
-              Professional Blog
-            </h1>
-
             {/* Search Bar */}
             <div className="relative max-w-md w-full mx-8">
               <input
@@ -227,7 +229,7 @@ export default function BlogsPage() {
                   </div>
 
                   <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2 text-card-foreground group-hover:text-primary transition-colors duration-300">
+                    <h3 className="text-xl line-clamp-1 font-semibold mb-2 text-card-foreground group-hover:text-primary transition-colors duration-300">
                       {blog.title}
                     </h3>
                     <p className="text-muted-foreground mb-4 line-clamp-2">
