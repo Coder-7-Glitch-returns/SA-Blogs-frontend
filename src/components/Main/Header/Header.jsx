@@ -1,7 +1,5 @@
 import React, { useRef, useState } from "react";
-import Logo from "../../../../public/assets/Logo.png";
 import { FaChevronDown, FaRegUserCircle } from "react-icons/fa";
-import { FiCamera, FiPlus } from "react-icons/fi";
 import { MdLogout } from "react-icons/md";
 import { IoSettingsOutline } from "react-icons/io5";
 import { LuMenu } from "react-icons/lu";

@@ -27,16 +27,17 @@ import UserProfile from "./pages/Profile/UserProfile";
 import UserSettings from "./pages/Profile/UserSettings";
 
 // User Dashboard
+import UserDashboard from "./pages/User/UserDashboard";
 import UserSidebar from "./components/User/Sidebar/UserSidebar";
 import UserHeader from "./components/User/Header/UserHeader";
 import Blogs from "./pages/User/Blogs";
 import AddBlogs from "./pages/User/AddBlogs";
+import WriterProfile from './pages/Profile/WriterProfile';
 
 // Admin Dashboard
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import AdminUsers from "./pages/Admin/AdminUsers";
 import AdminCategory from "./pages/Admin/AdminCategory";
-import BlogsPage from "./pages/Main/About";
 import AllBlogs from "./pages/Main/AllBlogs";
 import Footer from "./components/Main/Footer/Footer";
 
@@ -70,9 +71,9 @@ function App() {
   // UserLayout
   function UserLayout() {
     return (
-      <div className="flex">
+      <div className="flex w-full">
         <UserSidebar />
-        <div>
+        <div className="w-full">
           <UserHeader />
           <main>
             <Outlet />
@@ -86,7 +87,7 @@ function App() {
   function AdminLayout() {
     <div className="flex">
       <Sidebar />
-      <div>
+      <div className="w-full">
         <AdminHeader />
         <main>
           <Outlet />
@@ -178,14 +179,27 @@ function App() {
       children: [
         {
           index: true,
+          element: <UserDashboard />,
+        },
+        {
+          path: "blogs",
           element: <Blogs />,
         },
         {
           path: "add-blog",
           element: <AddBlogs />,
         },
+        {
+          path: "profile",
+          element: <UserProfile />,
+        },
+        {
+          path: 'settings',
+          element: <UserSettings />
+        }
       ],
     },
+
     // Admin Dashboard
     {
       path: "/admin",
