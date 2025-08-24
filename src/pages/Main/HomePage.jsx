@@ -118,87 +118,6 @@ function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <span className="text-2xl font-bold text-gray-800">SA Blogs</span>
-            </div>
-            <div className="hidden md:flex items-center space-x-8">
-              <a
-                href="#home"
-                className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium"
-              >
-                Home
-              </a>
-              <a
-                href="#style"
-                className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium"
-              >
-                Style
-              </a>
-              <a
-                href="#people"
-                className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium"
-              >
-                People
-              </a>
-              <a
-                href="#design"
-                className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium"
-              >
-                Design
-              </a>
-              <a
-                href="#travel"
-                className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium"
-              >
-                Travel
-              </a>
-              <a
-                href="#commercial"
-                className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium"
-              >
-                Commercial
-              </a>
-            </div>
-            <div className="flex items-center space-x-4">
-              <button className="p-2 text-gray-600 hover:text-gray-800">
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-              </button>
-              <button className="p-2 text-gray-600 hover:text-gray-800">
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
-
       {/* Hero Section */}
       <section
         id="home"
@@ -256,10 +175,10 @@ function HomePage() {
 
                   <div className="p-8">
                     <div className="text-sm text-gray-500 mb-2">
-                      by{" "}
+                      by
                       <span className="text-gray-700 font-medium">
                         {post.author}
-                      </span>{" "}
+                      </span>
                       • {post.date}
                     </div>
 
@@ -349,7 +268,7 @@ function HomePage() {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-6 py-3 rounded-full border-0 focus:outline-none focus:ring-2 focus:ring-white/50 text-gray-800"
+                className="flex-1 px-6 py-3 border-b-2 border-white/50 text-white placeholder:text-gray-300"
               />
               <button className="px-8 py-3 bg-white text-blue-600 font-semibold rounded-full hover:bg-gray-100 transition-colors duration-200">
                 Subscribe
@@ -515,116 +434,6 @@ function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="space-y-4">
-              <div className="flex items-center space-x-2">
-                <span className="text-xl font-bold">SA Blogs</span>
-              </div>
-              <p className="text-gray-400">
-                Inspiring stories and insights for the modern world.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>
-                  <a
-                    href="#home"
-                    className="hover:text-white transition-colors"
-                  >
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#style"
-                    className="hover:text-white transition-colors"
-                  >
-                    Style
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#people"
-                    className="hover:text-white transition-colors"
-                  >
-                    People
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#design"
-                    className="hover:text-white transition-colors"
-                  >
-                    Design
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Categories</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Technology
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Travel
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Photography
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Design
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Connect</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Twitter
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    LinkedIn
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Instagram
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    RSS Feed
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 SA Blogs Blog. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

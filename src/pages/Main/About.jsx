@@ -116,7 +116,7 @@ export default function BlogsPage() {
         (blog) =>
           blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
           blog.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          blog.author.toLowerCase().includes(searchTerm.toLowerCase())
+          blog.author.toLowerCase().includes(searchTerm.toLowerCase()),
       );
     }
 

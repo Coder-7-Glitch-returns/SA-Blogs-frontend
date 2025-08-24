@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function UserSidebar() {
-  return (
-    <div>
-      
-    </div>
-  )
+  return <div></div>;
 }
 
-export default UserSidebar
+export default UserSidebar;

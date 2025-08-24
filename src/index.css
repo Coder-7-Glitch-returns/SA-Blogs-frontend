@@ -1,9 +1,8 @@
 @import "tailwindcss";
 
 body {
-    @apply bg-gray-100
+  @apply bg-gray-100;
 }
-
 
 /* Added custom animations and utilities for the blog website */
 @keyframes gradient {
@@ -74,7 +73,6 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(to bottom, #2563eb, #7c3aed);
 }
-
 
 @import "tailwindcss";
 /* @import "tw-animate-css"; */

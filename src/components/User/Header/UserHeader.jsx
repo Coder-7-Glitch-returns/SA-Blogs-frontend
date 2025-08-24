@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function UserHeader() {
-  return (
-    <div>
-      
-    </div>
-  )
+  return <div></div>;
 }
 
-export default UserHeader
+export default UserHeader;

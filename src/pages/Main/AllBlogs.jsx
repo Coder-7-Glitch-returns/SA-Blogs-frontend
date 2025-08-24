@@ -92,12 +92,20 @@ const mockBlogs = [
 
 const categories = [
   "All",
-  "Technology",
-  "Programming",
-  "Design",
-  "Backend",
-  "Development",
-  "CSS",
+  "Artificial Intelligence (AI)",
+  "Personal Finance",
+  "Health and Wellness",
+  "Sustainable Living",
+  "Digital Marketing",
+  "Remote Work and Productivity",
+  "Gaming",
+  "Food and Recipes",
+  "Travel",
+  "Home Decor & DIY",
+  "Parenting",
+  "Personal Development",
+  "Tech & Gadget Reviews",
+  "Book and Writing",
 ];
 
 export default function AllBlogs() {
@@ -142,9 +150,9 @@ export default function AllBlogs() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pt-16">
       {/* Header with gradient */}
-      <header className="sticky top-0 z-40 bg-gradient-to-r from-primary to-secondary shadow-lg backdrop-blur-sm">
+      <header className="bg-gradient-to-r from-primary to-secondary shadow-lg">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             {/* Search Bar */}
@@ -237,9 +245,8 @@ export default function AllBlogs() {
                     </p>
 
                     <div className="flex items-center justify-between text-sm text-muted-foreground">
-                      <div className="flex items-center space-x-4">
-                        <span>{blog.author}</span>
-                        <span>{blog.readTime}</span>
+                      <div>
+                        By <span>{blog.author}</span>
                       </div>
                       <span>{new Date(blog.date).toLocaleDateString()}</span>
                     </div>

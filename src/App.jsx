@@ -15,7 +15,6 @@ import CategorySelection from "./pages/Authentication/CategorySelection";
 
 // MainLayout
 import HomePage from "./pages/Main/HomePage";
-import Cateogries from "./pages/Main/Cateogries";
 import About from "./pages/Main/About";
 import Header from "./components/Main/Header/Header";
 
@@ -29,7 +28,7 @@ import UserSettings from "./pages/Profile/UserSettings";
 
 // User Dashboard
 import UserSidebar from "./components/User/Sidebar/UserSidebar";
-import UserHeader from './components/User/Header/UserHeader';
+import UserHeader from "./components/User/Header/UserHeader";
 import Blogs from "./pages/User/Blogs";
 import AddBlogs from "./pages/User/AddBlogs";
 
@@ -39,6 +38,7 @@ import AdminUsers from "./pages/Admin/AdminUsers";
 import AdminCategory from "./pages/Admin/AdminCategory";
 import BlogsPage from "./pages/Main/About";
 import AllBlogs from "./pages/Main/AllBlogs";
+import Footer from "./components/Main/Footer/Footer";
 
 function App() {
   // MainLayout
@@ -49,6 +49,7 @@ function App() {
         <main>
           <Outlet />
         </main>
+        <Footer />
       </div>
     );
   }
@@ -61,6 +62,7 @@ function App() {
         <main>
           <Outlet />
         </main>
+        <Footer />
       </div>
     );
   }
@@ -141,6 +143,10 @@ function App() {
         {
           index: true,
           element: <HomePage />,
+        },
+        {
+          path: "about",
+          element: <About />,
         },
         {
           path: "blogs",
