@@ -99,7 +99,7 @@ function Parenting() {
 
       {isPopupOpen && selectedBlog && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-md">
-          <div className="bg-white rounded-lg shadow-2xl max-w-lg w-full p-6 relative transform transition-all duration-300 scale-95 opacity-0 animate-scale-in">
+          <div className="bg-white rounded-lg shadow-2xl max-w-lg w-full p-6 relative transform transition-all duration-300 scale-95 animate-scale-in">
             <button
               onClick={closePopup}
               className="absolute top-3 right-3 text-gray-500 hover:text-gray-800 transition-colors"
