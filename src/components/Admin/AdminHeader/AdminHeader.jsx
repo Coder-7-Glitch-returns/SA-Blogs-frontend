@@ -15,7 +15,7 @@ function AdminHeader() {
           >
             <img
               src="/assets/hero-img.jpg"
-              alt="IMG"
+              alt="IMG Not Found"
               className="rounded-full w-13 h-13"
             />
             <p className="text-lg font-medium hidden md:block">Muhammad Ahad</p>
