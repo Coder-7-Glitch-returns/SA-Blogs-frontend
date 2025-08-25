@@ -36,7 +36,6 @@ import AddBlogs from "./pages/User/AddBlogs";
 // Admin Dashboard
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import AdminUsers from "./pages/Admin/AdminUsers";
-import AdminCategory from "./pages/Admin/AdminCategory";
 import AllBlogs from "./pages/Main/AllBlogs";
 import Footer from "./components/Main/Footer/Footer";
 import AdminProfile from "./pages/Admin/Admin_Profile/AdminProfile";
@@ -106,7 +105,7 @@ function App() {
         <AdminSidebar />
         <div className="w-full">
           <AdminHeader />
-          <main>
+          <main className="p-6">
             <Outlet />
           </main>
         </div>

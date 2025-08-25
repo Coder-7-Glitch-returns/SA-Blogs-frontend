@@ -1,68 +1,70 @@
 import React, { useState } from "react";
 
-function AdminUsers() {
-  const users = [
-    {
-      id: 1,
-      name: "Alice Johnson",
-      gmail: "alice.j@example.com",
-      role: "admin",
-      category: null,
-      bio: "An expert in system administration and security protocols. She oversees all user permissions.",
-      createdAt: "08/24/2025",
-      createdOn: "10:15 AM",
-    },
-    {
-      id: 2,
-      name: "Bob Smith",
-      gmail: "bob.s@example.com",
-      role: "writer",
-      category: "Technology",
-      bio: "A passionate blogger focused on emerging trends in artificial intelligence.",
-      createdAt: "08/23/2025",
-      createdOn: "09:00 AM",
-    },
-    {
-      id: 3,
-      name: "Charlie Davis",
-      gmail: "charlie.d@example.com",
-      role: "user",
-      category: null,
-      bio: "A new user exploring the platform for the first time. Interested in all content.",
-      createdAt: "08/22/2025",
-      createdOn: "1:40 PM",
-    },
-    {
-      id: 4,
-      name: "Dana Lee",
-      gmail: "dana.l@example.com",
-      role: "blogger",
-      category: null,
-      bio: "A creative blogger who writes about lifestyle, travel, and food.",
-      createdAt: "08/21/2025",
-      createdOn: "04:30 PM",
-    },
-    {
-      id: 5,
-      name: "Charlie Davis",
-      gmail: "charlie.d@example.com",
-      role: "user",
-      category: null,
-      bio: "A new user exploring the platform for the first time. Interested in all content.",
-      createdAt: "08/22/2025",
-      createdOn: "1:40 PM",
-    },
-    {
-      id: 6,
-      name: "Dana Lee",
-      gmail: "dana.l@example.com",
-      role: "blogger",
-      category: null,
-      bio: "A creative blogger who writes about lifestyle, travel, and food.",
-      createdAt: "08/21/2025",
-      createdOn: "04:30 PM",
-    },
-  ];
+// Sample data for the users
+const users = [
+  {
+    id: 1,
+    name: "Alice Johnson",
+    gmail: "alice.j@example.com",
+    role: "admin",
+    category: null,
+    bio: "An expert in system administration and security protocols. She oversees all user permissions.",
+    createdAt: "08/24/2025",
+    createdOn: "10:15 AM",
+  },
+  {
+    id: 2,
+    name: "Bob Smith",
+    gmail: "bob.s@example.com",
+    role: "writer",
+    category: "Technology",
+    bio: "A passionate blogger focused on emerging trends in artificial intelligence.",
+    createdAt: "08/23/2025",
+    createdOn: "09:00 AM",
+  },
+  {
+    id: 3,
+    name: "Charlie Davis",
+    gmail: "charlie.d@example.com",
+    role: "user",
+    category: null,
+    bio: "A new user exploring the platform for the first time. Interested in all content.",
+    createdAt: "08/22/2025",
+    createdOn: "1:40 PM",
+  },
+  {
+    id: 4,
+    name: "Dana Lee",
+    gmail: "dana.l@example.com",
+    role: "blogger",
+    category: null,
+    bio: "A creative blogger who writes about lifestyle, travel, and food.",
+    createdAt: "08/21/2025",
+    createdOn: "04:30 PM",
+  },
+  {
+    id: 5,
+    name: "Charlie Davis",
+    gmail: "charlie.d@example.com",
+    role: "user",
+    category: null,
+    bio: "A new user exploring the platform for the first time. Interested in all content.",
+    createdAt: "08/22/2025",
+    createdOn: "1:40 PM",
+  },
+  {
+    id: 6,
+    name: "Dana Lee",
+    gmail: "dana.l@example.com",
+    role: "blogger",
+    category: null,
+    bio: "A creative blogger who writes about lifestyle, travel, and food.",
+    createdAt: "08/21/2025",
+    createdOn: "04:30 PM",
+  },
+];
+
+function UsersTable() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
 
@@ -109,7 +111,7 @@ function AdminUsers() {
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => (
+            {users.slice(0, 4).map((user) => (
               <tr
                 key={user.id}
                 className="hover:bg-sky-100 cursor-pointer transition-colors duration-200"
@@ -192,4 +194,4 @@ function AdminUsers() {
   );
 }
 
-export default AdminUsers;
+export default UsersTable;

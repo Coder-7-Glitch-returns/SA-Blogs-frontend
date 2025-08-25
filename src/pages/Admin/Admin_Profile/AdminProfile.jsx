@@ -8,6 +8,7 @@ function AdminProfile() {
       email: "user@example.com",
       bio: "Full Stack Web Developer | Anime Enthusiast | Gamer | Always leveling up in code, stories, and strategy.",
       joinDate: "2023-01-15",
+      role: "creator",
     },
   ]);
   const [isEditing, setIsEditing] = useState(false);
@@ -59,6 +60,17 @@ function AdminProfile() {
                       {currentProfile.name}
                     </h2>
                     <p className="text-sky-100">{currentProfile.email}</p>
+                    <p
+                      className={
+                        currentProfile.role === "admin"
+                          ? "text-red-700"
+                          : currentProfile.role === "creator"
+                          ? "text-white"
+                          : "text-sky-300"
+                      }
+                    >
+                      {currentProfile.role}
+                    </p>
                   </div>
                 </div>
                 <button
@@ -93,7 +105,7 @@ function AdminProfile() {
                         year: "numeric",
                         month: "long",
                         day: "numeric",
-                      },
+                      }
                     )}
                   </p>
                 </div>
