@@ -1,47 +1,41 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaEye, FaEyeSlash } from "react-icons/fa"; // Importing icons from react-icons
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import axios from "axios";
+import { toast } from "react-toastify"; // ✅ import toast
 
 const LoginForm = () => {
-  const [formData, setFormData] = useState([
-    {
-      email: "",
-      password: "",
-    },
-  ]);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
   const [showPassword, setShowPassword] = useState(false);
-  const [errors, setErrors] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Password validation
-    if (!formData.password || !formData.email) {
-      setErrors("Fields are required.");
-      return;
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-      setEmailError("Email address is invalid.");
-      return;
-    }
+    try {
+      const res = await axios.post(
+        "https://sa-blogs-backend-ashy.vercel.app/api/users/login",
+        formData
+      );
 
-    console.log("Login successful!", formData);
-    setTimeout(() => {
-      navigate("/main/");
-    }, 2000);
+      console.log(res.data);
+      navigate("/main");
+    } catch (err) {
+      console.error(err);
+      toast.error(err?.response?.data?.message || "Try again later!"); // ✅ error toast
+    }
   };
 
   const handleLoginChange = (e) => {
     const { name, value } = e.target;
-    // Update the form data state using the input's name
     setFormData((prevData) => ({ ...prevData, [name]: value }));
-    // Clear the error for the current input field as the user types
-    setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
   };
 
   return (
     <div className="font-sans">
-      {errors && <div className="text-red-500 text-sm mt-1">{errors}</div>}
       <form className="space-y-4 p-6" onSubmit={handleSubmit}>
         <div className="space-y-2">
           <label htmlFor="email" className="text-gray-700 font-medium">
@@ -51,6 +45,7 @@ const LoginForm = () => {
             id="email"
             type="email"
             placeholder="Enter your email"
+            name="email"
             value={formData.email}
             onChange={handleLoginChange}
             className="border-sky-200 focus:border-sky-400 focus:ring-sky-400 transition-all duration-200 hover:border-sky-300 w-full px-3 py-2
@@ -67,6 +62,7 @@ const LoginForm = () => {
               id="password"
               type={showPassword ? "text" : "password"}
               placeholder="Enter your password"
+              name="password"
               value={formData.password}
               onChange={handleLoginChange}
               className="border-sky-200 focus:border-sky-400 focus:ring-sky-400 transition-all duration-200 hover:border-sky-300 w-full px-3 py-2
