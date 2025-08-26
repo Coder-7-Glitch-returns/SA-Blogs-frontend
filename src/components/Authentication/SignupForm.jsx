@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, data, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // Importing icons from react-icons
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
 const SignupForm = () => {
   // State for all form fields in a single object
@@ -19,6 +21,8 @@ const SignupForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+ const navigate = useNavigate();
+
   // Handle changes for signup form fields
   const handleSignupChange = (e) => {
     const { name, value } = e.target;
@@ -33,11 +37,19 @@ const SignupForm = () => {
     e.preventDefault();
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length === 0) {
-      // Form is valid, you can add your signup logic here
-      console.log("Signup successful!", formData);
-      // You could programmatically navigate here, e.g., history.push('/signup-otp-send')
-      // Removed the alert() as per best practices in React.
-      // Instead, we'll log to the console.
+      axios
+        .post(
+          "https://sa-blogs-backend-ashy.vercel.app/api/users/signup",
+          formData
+        )
+        .then((res) => {
+          navigate("/signup-otp-send");
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error(err?.response?.data?.message || "Try again later!");
+        });
+
     } else {
       // Form has errors, update state to display them
       setErrors(validationErrors);
@@ -70,6 +82,7 @@ const SignupForm = () => {
   };
 
   return (
+    <>
     <div className="font-sans">
       <form className="space-y-4 p-6" onSubmit={handleSubmit}>
         <div className="grid grid-cols-2 gap-4">
@@ -201,10 +214,11 @@ const SignupForm = () => {
           className="px-4 py-2 rounded-lg font-medium w-full bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 hover:from-sky-600
           hover:via-blue-700 hover:to-indigo-700 text-white shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
         >
-          <Link to={"/signup-otp-send"}>Create Account</Link>
+          Create Account
         </button>
       </form>
     </div>
+    </>
   );
 };
 
