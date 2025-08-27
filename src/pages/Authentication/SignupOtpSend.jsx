@@ -1,16 +1,44 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 function SignupOtpSend() {
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+  function handleOtpSend(e) {
+    e.preventDefault();
+
+    // Validations
+    if (!email) {
+      toast.error("Email is required");
+      return;
+    }
+
+    axios
+      .post("https://sa-blogs-backend-ashy.vercel.app/api/users/signup/otp", {
+        email: email,
+      })
+      .then((res) => {
+        navigate("/sign-up-otp");
+        localStorage.setItem("Sign-Up-OTP", res.data.otp);
+      })
+      .catch((err) => {
+        console.log("error in API: ", err);
+        toast.error(err?.response?.data?.message || "Try Again");
+      });
+  }
   return (
     <div className="flex items-center justify-center h-screen relative">
+      <ToastContainer position="top-right" />
       <div className="absolute inset-0 opacity-30">
         <div
           className="absolute inset-0 bg-[length:60px_60px]"
           style={{
             backgroundImage: `
             linear-gradient(to right, rgb(14 165 233 / 0.15) 1px, transparent 1px),
-            linear-gradient(to bottom, rgb(14 165 233 / 0.15) 1px, transparent 1px)
+            linear-gradient(to bottom, rgb(14 165 233 / 0.15 q) 1px, transparent 1px)
           `,
           }}
         />
@@ -72,7 +100,7 @@ function SignupOtpSend() {
             </p>
           </div>
         </div>
-        <form className="space-y-4 p-6">
+        <form className="space-y-4 p-6" onSubmit={handleOtpSend}>
           <div className="space-y-2">
             <label htmlFor="email" className="text-gray-700 font-medium">
               Email
@@ -81,19 +109,18 @@ function SignupOtpSend() {
               id="email"
               type="email"
               placeholder="Enter your email"
+              onChange={(e) => setEmail(e.target.value)}
               className="border-sky-200 focus:border-sky-400 focus:ring-sky-400 transition-all duration-200 hover:border-sky-300 w-full px-3 py-2
               border rounded-lg focus:outline-none focus:ring-2"
             />
           </div>
-          <Link to={"/sign-up-otp"}>
-            <button
-              type="submit"
-              className="px-4 py-2 rounded-lg font-medium w-full bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 hover:from-sky-600
+          <button
+            type="submit"
+            className="px-4 py-2 rounded-lg font-medium w-full bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 hover:from-sky-600
               hover:via-blue-700 hover:to-indigo-700 text-white shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
-            >
-              OTP Send
-            </button>
-          </Link>
+          >
+            OTP Send
+          </button>
         </form>
       </div>
     </div>
